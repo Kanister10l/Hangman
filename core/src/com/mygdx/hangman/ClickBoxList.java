@@ -21,11 +21,19 @@ public class ClickBoxList {
         clickBoxes.add(new ClickBox(fromX, fromY, toX, toY, nextView));
     }
 
+    public void addClickBox(float fromX, float fromY, float toX, float toY, int operationCode){
+        clickBoxes.add(new ClickBox(fromX, fromY, toX, toY, operationCode));
+    }
+
+    public void addClickBox(float fromX, float fromY, float toX, float toY, String nextView, int operationCode){
+        clickBoxes.add(new ClickBox(fromX, fromY, toX, toY, nextView, operationCode));
+    }
+
     public ClickResponse getResponse(float x, float y){
         for (ClickBox clickBox: clickBoxes) {
             if (clickBox.isClicked(x, y))
                 return clickBox.respond();
         }
-        return null;
+        return new ClickResponse();
     }
 }

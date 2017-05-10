@@ -15,18 +15,25 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 	private HView hView;
 	private ClickResponse clickResponse;
 	private GestureDetector gestureDetector;
+	private float r = 0;
+	private float h;
+	private float w;
 	
 	@Override
 	public void create () {
+	    h = (float)Gdx.graphics.getHeight();
+	    w = (float)Gdx.graphics.getWidth();
 		viewGenerator = new ViewGenerator();
 		hView = viewGenerator.getView("HMainView");
+		hView.setResolution(h, w);
 		System.out.println(hView.getName());
 		gestureDetector = new GestureDetector(this);
+		Gdx.input.setInputProcessor(gestureDetector);
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClearColor( r, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		hView.render();
 	}
@@ -43,9 +50,13 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 
     @Override
     public boolean tap(float x, float y, int count, int button) {
-	    clickResponse = hView.handleClick();
-	    if (clickResponse.getNextView() != null)
-	        hView = viewGenerator.getView(clickResponse.getNextView());
+        System.out.println("tap X: " + x + " Y: " + y);
+        r = (float) Math.random();
+	    clickResponse = hView.handleClick(x, y);
+	    if (clickResponse.getNextView() != null) {
+            hView = viewGenerator.getView(clickResponse.getNextView());
+            hView.setResolution(h, w);
+        }
         return false;
     }
 
