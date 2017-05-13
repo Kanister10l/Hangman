@@ -24,10 +24,10 @@ public class Menu extends HView {
     private BitmapFont font;
     private ShapeRenderer shapeRenderer;
 
-    public Menu(){
+    public Menu(float h, float w){
         name = "Menu";
-        h = 0;
-        w = 0;
+        this.h = h;
+        this.w = w;
         this.create();
     }
     @Override
@@ -82,11 +82,5 @@ public class Menu extends HView {
         batch.dispose();
         font.dispose();
         shapeRenderer.dispose();
-    }
-
-    @Override
-    public void setResolution(float h, float w) {
-        this.h = h;
-        this.w = w;
     }
 }

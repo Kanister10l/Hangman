@@ -22,8 +22,7 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 	    h = (float)Gdx.graphics.getHeight();
 	    w = (float)Gdx.graphics.getWidth();
 		viewGenerator = new ViewGenerator();
-		hView = viewGenerator.getView("Menu");
-		hView.setResolution(h, w);;
+		hView = viewGenerator.getView("Menu", h, w);
 		System.out.println(hView.getName());
 		gestureDetector = new GestureDetector(this);
 		Gdx.input.setInputProcessor(gestureDetector);
@@ -31,8 +30,6 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor( r, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		hView.render();
 	}
 	
@@ -52,8 +49,7 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
         r = (float) Math.random();
 	    clickResponse = hView.handleClick(x, y);
 	    if (clickResponse.getNextView() != null) {
-            hView = viewGenerator.getView(clickResponse.getNextView());
-            hView.setResolution(h, w);
+            hView = viewGenerator.getView(clickResponse.getNextView(), h, w);
         }
         return false;
     }

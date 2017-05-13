@@ -14,10 +14,10 @@ public class HMainView extends HView {
     private float w;
     private float h;
 
-    public HMainView(){
+    public HMainView(float h, float w){
         name = "HMainView";
-        h = 0;
-        w = 0;
+        this.h = h;
+        this.w = w;
         this.create();
     }
 
@@ -51,11 +51,5 @@ public class HMainView extends HView {
     protected void create() {
         clickBoxList = new ClickBoxList();
         clickBoxList.addClickBox(0, 0, 100, 100, 1);
-    }
-
-    @Override
-    public void setResolution(float h, float w) {
-        this.h = h;
-        this.w = w;
     }
 }
