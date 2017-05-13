@@ -3,8 +3,6 @@ package com.mygdx.hangman;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
 import hview.HView;
@@ -24,7 +22,7 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 	    h = (float)Gdx.graphics.getHeight();
 	    w = (float)Gdx.graphics.getWidth();
 		viewGenerator = new ViewGenerator();
-		hView = viewGenerator.getView("HMainView");
+		hView = viewGenerator.getView("Menu");
 		hView.setResolution(h, w);
 		System.out.println(hView.getName());
 		gestureDetector = new GestureDetector(this);
