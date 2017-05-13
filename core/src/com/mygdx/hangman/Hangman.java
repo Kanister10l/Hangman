@@ -23,7 +23,7 @@ public class Hangman extends ApplicationAdapter implements GestureDetector.Gestu
 	    w = (float)Gdx.graphics.getWidth();
 		viewGenerator = new ViewGenerator();
 		hView = viewGenerator.getView("Menu");
-		hView.setResolution(h, w);
+		hView.setResolution(h, w);;
 		System.out.println(hView.getName());
 		gestureDetector = new GestureDetector(this);
 		Gdx.input.setInputProcessor(gestureDetector);

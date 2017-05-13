@@ -10,12 +10,12 @@ public abstract class HView {
     public abstract String getName();
 
     public abstract ClickResponse handleClick(float x, float y);
-
-    public abstract void dispose();
+    protected abstract void create();
 
     public abstract void render();
 
-    protected abstract void create();
+    public abstract void dispose();
+
 
     public  abstract void setResolution(float h, float w);
 }
