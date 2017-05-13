@@ -1,30 +1,25 @@
 package com.mygdx.hangman;
 
 import com.mongodb.*;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
-import static com.badlogic.gdx.math.MathUtils.random;
-import static com.mongodb.client.model.Aggregates.limit;
 
 /**
  * Created by jamsl on 2017-04-02.
  */
 
-public class PrepareWord{
+public class WordLoader {
     double points;
     Word word;
     MongoCollection<Document> connection;
-    public PrepareWord(){
+    public WordLoader(){
         loadCollection();
     }
-    public PrepareWord(double points){
+    public WordLoader(double points){
         this.points = points;
         loadCollection();
     }
@@ -55,7 +50,7 @@ public class PrepareWord{
     }
     public static void main( final String[] args ){
         Random generator = new Random();
-        PrepareWord data = new PrepareWord();
+        WordLoader data = new WordLoader();
         for(int i=0;i<50;i++){
             double randomValue = generator.nextFloat()*30+1;
             data.setPoints(randomValue);
