@@ -29,9 +29,9 @@ public class ClickBoxList {
         clickBoxes.add(new ClickBox(fromX, fromY, toX, toY, nextView, operationCode));
     }
 
-    public ClickResponse getResponse(float x, float y){
+    public ClickResponse getResponse(float x, float y, float h){
         for (ClickBox clickBox: clickBoxes) {
-            if (clickBox.isClicked(x, y))
+            if (clickBox.isClicked(x, h - 1 - y))
                 return clickBox.respond();
         }
         return new ClickResponse();

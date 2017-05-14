@@ -36,7 +36,7 @@ public class Menu extends HView {
     }
     @Override
     public ClickResponse handleClick(float x, float y) {
-        clickResponse = clickBoxList.getResponse(x, y);
+        clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
         if (operationCode == 1){
             System.exit(0);
