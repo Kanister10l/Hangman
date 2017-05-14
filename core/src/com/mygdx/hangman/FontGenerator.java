@@ -10,13 +10,13 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
  */
 public class FontGenerator {
 
-    public static BitmapFont getFont(String fontFileName, int size, boolean border) {
+    public static BitmapFont getFont(String fontFileName, int size, boolean border, Color color) {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/"+fontFileName));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         parameter.characters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźżAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";
         parameter.size = size;
-
+        parameter.color = color;
         if(border){
             parameter.borderColor = Color.BLACK;
             parameter.borderWidth = 2;
