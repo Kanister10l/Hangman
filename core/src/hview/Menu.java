@@ -1,13 +1,13 @@
 package hview;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.hangman.ClickBoxList;
 import com.mygdx.hangman.ClickResponse;
+import com.mygdx.hangman.FontGenerator;
 
 /**
  * Created by jamsl on 2017-05-13.
@@ -21,24 +21,26 @@ public class Menu extends HView {
     private float w;
     private float h;
     private SpriteBatch batch;
-    private BitmapFont font;
+    private BitmapFont font1;
     private ShapeRenderer shapeRenderer;
 
-    public Menu(float h, float w){
+    public Menu(float h, float w) {
         name = "Menu";
         this.h = h;
         this.w = w;
         this.create();
     }
+
     @Override
     public String getName() {
         return name;
     }
+
     @Override
     public ClickResponse handleClick(float x, float y) {
         clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
-        if (operationCode == 1){
+        if (operationCode == 1) {
             System.exit(0);
         }
         return clickResponse;
@@ -47,40 +49,42 @@ public class Menu extends HView {
 
     @Override
     protected void create() {
-       batch = new SpriteBatch();
-       font = new BitmapFont();
-       shapeRenderer = new ShapeRenderer();
-        font.setColor(Color.RED);
-        font.getData().setScale(2);
+        batch = new SpriteBatch();
+
+        shapeRenderer = new ShapeRenderer();
+
+        font1 = new FontGenerator().getFont("Roboto-Medium.ttf",22,true);
         clickBoxList = new ClickBoxList();
-        clickBoxList.addClickBox(w/4, h-100, w/4+w/2, h-100+70, "game");
-        clickBoxList.addClickBox(w/4, h-200, w/4+w/2, h-200+70, "options");
-        clickBoxList.addClickBox(w/4, h-300, w/4+w/2, h-300+70, 1);
+        clickBoxList.addClickBox(w / 4, h - 100, w / 4 + w / 2, h - 100 + 70, "Game");
+        clickBoxList.addClickBox(w / 4, h - 200, w / 4 + w / 2, h - 200 + 70, "Options");
+        clickBoxList.addClickBox(w / 4, h - 300, w / 4 + w / 2, h - 300 + 70, 1);
     }
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor( 255, 255, 255, 1);
+        Gdx.gl.glClearColor(132/255f, 95/255f, 97/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0, 1, 0, 1);
-        shapeRenderer.rect(w/4, h-100, w/2, 70);
+        shapeRenderer.rect(w / 4, h - 100, w / 2, 70);
         shapeRenderer.setColor(1, 1, 0, 1);
-        shapeRenderer.rect(w/4, h-200, w/2, 70);
+        shapeRenderer.rect(w / 4, h - 200, w / 2, 70);
         shapeRenderer.setColor(1, 0, 1, 1);
-        shapeRenderer.rect(w/4, h-300, w/2, 70);
+        shapeRenderer.rect(w / 4, h - 300, w / 2, 70);
         shapeRenderer.end();
         batch.begin();
-        font.draw(batch, "Start", w/4+w/4-20, h-50);
-        font.draw(batch, "Opcje", w/4+w/4-20, h-150);
-        font.draw(batch, "Wyjście", w/4+w/4-20, h-250);
+        font1.draw(batch, "Start", w / 4 + w / 4 - 30, h - 50);
+        font1.draw(batch, "Opcje", w / 4 + w / 4 - 30, h - 150);
+        font1.draw(batch, "Wyjście", w / 4 + w / 4 - 35, h - 250);
         batch.end();
     }
+
     @Override
     public void dispose() {
         batch.dispose();
-        font.dispose();
+        font1.dispose();
         shapeRenderer.dispose();
+
     }
 }
