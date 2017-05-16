@@ -58,8 +58,6 @@ public class Menu extends HView {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        gibbet = new Texture(Gdx.files.internal("core/assets/sprites/1element.png"));
-        bone1 = new Texture(Gdx.files.internal("core/assets/sprites/kosc1.png"));
         font1 = new FontGenerator().getFont("Roboto-Medium.ttf",28,true, Color.WHITE);
         font2 = new FontGenerator().getFont("Drawing Guides.ttf",70,false, Color.BLACK);
         clickBoxList = new ClickBoxList();
