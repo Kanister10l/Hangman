@@ -66,7 +66,6 @@ public class GameView extends HView{
     public ClickResponse handleClick(float x, float y) {
         clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
-        System.out.println(clickResponse.getNextView());
         if (!lost && operationCode != 0)
             faults += checkLetter((char) operationCode);
         if (faults >= 11)
@@ -162,10 +161,11 @@ public class GameView extends HView{
             spriteList.get(i).draw(batch);
 
         }
-        font1.draw(batch, "Liczba błędów: " + faults, 100, h - 170);
+        font1.draw(batch, "Liczba błędów: " + faults + "/11", 100, h - 170);
         if (lost && menuCreated){
             font1.draw(batch, "Menu", 40, h - 415);
             font1.draw(batch, "Jeszcze raz", 40, h - 475);
+            font1.draw(batch, "Przegrałeś!!!", 100, h - 230);
         }
         batch.end();
     }
