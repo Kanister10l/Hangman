@@ -78,7 +78,7 @@ public class GameView extends HView{
         int r = 0;
         clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
-        if (!lost && operationCode != 0) {
+        if (!lost && operationCode != 0 && !won) {
             r = checkLetter((char) operationCode);
             faults += r;
             if (r == 0);
