@@ -49,6 +49,7 @@ public class GameView extends HView{
     private List<Sprite> spriteList;
     private boolean lost;
     private boolean menuCreated;
+    private boolean won;
 
     public GameView(float h, float w){
         name = "GameView";
@@ -70,6 +71,7 @@ public class GameView extends HView{
             faults += checkLetter((char) operationCode);
         if (faults >= 11)
             lost = true;
+        won = checkWin();
         return clickResponse;
     }
 
@@ -85,6 +87,7 @@ public class GameView extends HView{
         faults = 0;
         lost = false;
         menuCreated = false;
+        won = false;
 
         font1 = FontGenerator.getFont("Roboto-Medium.ttf",28,true, Color.WHITE);
         font2 = FontGenerator.getFont("Drawing Guides.ttf",70,false, Color.BLACK);
@@ -120,7 +123,7 @@ public class GameView extends HView{
 
     @Override
     public void render() {
-        if (lost && !menuCreated) {
+        if ((won || lost) && !menuCreated) {
             clickBoxList.addClickBox(30, h - 450, 260, h - 400, "Menu");
             clickBoxList.addClickBox(30, h - 510, 260, h - 460, "GameView");
             menuCreated = true;
@@ -128,7 +131,7 @@ public class GameView extends HView{
         Gdx.gl.glClearColor(160/255f, 160/255f, 160/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (lost && menuCreated){
+        if ((won || lost) && menuCreated){
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(46/255f, 38/255f, 33/255f, 1);
             shapeRenderer.rect(30, h - 450 -1, 230, 50);
@@ -162,10 +165,13 @@ public class GameView extends HView{
 
         }
         font1.draw(batch, "Liczba błędów: " + faults + "/11", 100, h - 170);
-        if (lost && menuCreated){
+        if ((won || lost) && menuCreated){
             font1.draw(batch, "Menu", 40, h - 415);
             font1.draw(batch, "Jeszcze raz", 40, h - 475);
-            font1.draw(batch, "Przegrałeś!!!", 100, h - 230);
+            if (lost)
+                font1.draw(batch, "Przegrałeś!!!", 100, h - 230);
+            else if (won)
+                font1.draw(batch, "Wygrałeś!!!", 100, h - 230);
         }
         batch.end();
     }
@@ -190,5 +196,13 @@ public class GameView extends HView{
             return 1;
         else
             return 0;
+    }
+    private boolean checkWin(){
+        boolean w = true;
+        for (int i = 0; i < wordLength; i++) {
+            if (!hFieldList.get(i).filled)
+                w = false;
+        }
+        return w;
     }
 }
