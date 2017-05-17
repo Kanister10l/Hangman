@@ -1,6 +1,7 @@
 package hview;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,6 +16,7 @@ import com.mygdx.hangman.WordLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created on 16.05.2017 by Kamil Samul for usage in Hangman.
@@ -50,6 +52,14 @@ public class GameView extends HView{
     private boolean lost;
     private boolean menuCreated;
     private boolean won;
+    //private Sound correctSound;
+    private Sound wrongSound;
+    //private Sound[] loseSounds;
+    private Sound[] winSounds;
+    private Sound loseSound;
+    private boolean wonPlayed;
+    private boolean losePlayed;
+    private Random random;
 
     public GameView(float h, float w){
         name = "GameView";
@@ -65,13 +75,27 @@ public class GameView extends HView{
 
     @Override
     public ClickResponse handleClick(float x, float y) {
+        int r = 0;
         clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
-        if (!lost && operationCode != 0)
-            faults += checkLetter((char) operationCode);
+        if (!lost && operationCode != 0) {
+            r = checkLetter((char) operationCode);
+            faults += r;
+            if (r == 0);
+            else
+                wrongSound.play();
+        }
         if (faults >= 11)
             lost = true;
         won = checkWin();
+        if (won && !wonPlayed){
+            winSounds[random.nextInt(3)].play();
+            wonPlayed = true;
+        }
+        else if (lost && !losePlayed){
+            loseSound.play();
+            losePlayed = true;
+        }
         return clickResponse;
     }
 
@@ -82,6 +106,9 @@ public class GameView extends HView{
         wordLoader = new WordLoader(10);
         clickBoxList = new ClickBoxList();
         spriteList = new ArrayList<Sprite>(12);
+        random = new Random();
+        winSounds = new Sound[3];
+        //loseSounds = new Sound[3];
 
         selectedField = 0;
         faults = 0;
@@ -119,6 +146,16 @@ public class GameView extends HView{
         clickBoxList.addClickBox(49 * 6, 0, 49 * 7 - 1, font1.getLineHeight() -1, 346);
         clickBoxList.addClickBox(49 * 7, 0, 49 * 8 - 1, font1.getLineHeight() -1, 377);
         clickBoxList.addClickBox(49 * 8, 0, 49 * 9 - 1, font1.getLineHeight() -1, 376);
+
+        //correctSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/correctSound.wav"));
+        wrongSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/wrongSound.wav"));
+        loseSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/loseSound2.wav"));
+        for (int i = 0; i < 3; i++) {
+            winSounds[i] = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/winSound" + (i + 1) + ".wav"));
+        }
+        /*for (int i = 0; i < 3; i++) {
+            loseSounds[i] = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/loseSound" + (i + 1) + ".wav"));
+        }*/
     }
 
     @Override
