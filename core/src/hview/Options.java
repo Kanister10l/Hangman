@@ -89,7 +89,7 @@ public class Options extends HView {
         diff[1] = new Diff(20, 30, "Łatwy");
         diff[2] = new Diff(30, 40, "Średni");
         diff[3] = new Diff(40, 50, "Trudny");
-        diff[4] = new Diff(50, 80, "Piekielny");
+        diff[4] = new Diff(50, 76, "Piekielny");
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         clickBoxList = new ClickBoxList();

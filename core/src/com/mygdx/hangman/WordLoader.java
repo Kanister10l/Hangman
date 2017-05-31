@@ -53,15 +53,4 @@ public class WordLoader {
     public Word getWord() {
         return word;
     }
-
-    public static void main(final String[] args) {
-        Random generator = new Random();
-        WordLoader data = new WordLoader();
-        for (int i = 0; i < 50; i++) {
-            double randomValue = generator.nextFloat() * 30 + 1;
-            data.setPoints(randomValue);
-            data.loadWord();
-            System.out.println("Wylosowalo: " + randomValue + ", z bazy wyjeto: " + data.getWord().toString());
-        }
-    }
 }
