@@ -1,7 +1,6 @@
 package hview;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -44,9 +43,7 @@ public class Menu extends HView {
         clickResponse = clickBoxList.getResponse(x, y, h);
         operationCode = clickResponse.getOperationCode();
         if (operationCode == 1) {
-            //System.exit(0);
-            Sound sound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/winSound1.wav"));
-            sound.play();
+            System.exit(0);
         }
         return clickResponse;
     }

@@ -9,10 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.mygdx.hangman.ClickBoxList;
-import com.mygdx.hangman.ClickResponse;
-import com.mygdx.hangman.FontGenerator;
-import com.mygdx.hangman.WordLoader;
+import com.mygdx.hangman.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +57,7 @@ public class GameView extends HView{
     private boolean wonPlayed;
     private boolean losePlayed;
     private Random random;
-
+    private GameConfig gameConfig = GameConfig.getInstance();
     public GameView(float h, float w){
         name = "GameView";
         this.h = h;
@@ -81,19 +78,28 @@ public class GameView extends HView{
         if (!lost && operationCode != 0 && !won) {
             r = checkLetter((char) operationCode);
             faults += r;
-            if (r == 0);
-            else
-                wrongSound.play();
+            if (r != 0) {
+
+                if(gameConfig.getNotMuteSound()) {
+                    wrongSound.play();
+                }
+            }
+
         }
         if (faults >= 11)
             lost = true;
         won = checkWin();
         if (won && !wonPlayed){
-            winSounds[random.nextInt(3)].play();
+            if(gameConfig.getNotMuteSound()){
+                winSounds[random.nextInt(3)].play();
+            }
+
             wonPlayed = true;
         }
         else if (lost && !losePlayed){
-            loseSound.play();
+            if(gameConfig.getNotMuteSound()){
+                loseSound.play();
+            }
             losePlayed = true;
         }
         return clickResponse;
@@ -103,7 +109,7 @@ public class GameView extends HView{
     protected void create() {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-        wordLoader = new WordLoader(10);
+        wordLoader = new WordLoader(gameConfig.getDifficulty());
         clickBoxList = new ClickBoxList();
         spriteList = new ArrayList<Sprite>(12);
         random = new Random();
@@ -153,9 +159,7 @@ public class GameView extends HView{
         for (int i = 0; i < 3; i++) {
             winSounds[i] = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/winSound" + (i + 1) + ".wav"));
         }
-        /*for (int i = 0; i < 3; i++) {
-            loseSounds[i] = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/loseSound" + (i + 1) + ".wav"));
-        }*/
+
     }
 
     @Override

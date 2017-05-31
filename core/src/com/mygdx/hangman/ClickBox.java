@@ -47,9 +47,7 @@ public class ClickBox {
     }
 
     public boolean isClicked(float x, float y){
-        if (x >= fromX && x <= toX && y >= fromY && y <= toY)
-            return true;
-        return false;
+        return x >= fromX && x <= toX && y >= fromY && y <= toY;
     }
 
     public ClickResponse respond(){
