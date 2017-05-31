@@ -53,6 +53,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile 'org.mongodb:mongodb-driver:3.4.2'
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        testCompile 'junit:junit:4.12'
     }
 }
 
