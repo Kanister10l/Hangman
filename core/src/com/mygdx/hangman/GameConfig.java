@@ -4,8 +4,8 @@ package com.mygdx.hangman;
  * Created by jamsl on 2017-05-31.
  */
 public class GameConfig {
-        private Boolean notMuteSound = true;
-        private int difficulty = 21;
+    private Boolean notMuteSound = true;
+    private int difficulty = 21;
 
     public void switchSound() {
          notMuteSound = !notMuteSound;
@@ -24,13 +24,14 @@ public class GameConfig {
     }
 
     private static GameConfig instance = null;
-        protected GameConfig() {
+
+    protected GameConfig() {
             // Exists only to defeat instantiation.
+    }
+    public static GameConfig getInstance() {
+        if(instance == null) {
+            instance = new GameConfig();
         }
-        public static GameConfig getInstance() {
-            if(instance == null) {
-                instance = new GameConfig();
-            }
-            return instance;
-        }
+        return instance;
+    }
 }
