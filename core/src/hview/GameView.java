@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created on 16.05.2017 by Kamil Samul for usage in Hangman.
- */
+
 public class GameView extends HView{
     private class HField{
         public char letter;

@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created on 31.05.2017 by Kamil Samul for usage in Hangman.
- */
+
 public class ClickBoxTest {
     @Test
     public void respond() throws Exception {

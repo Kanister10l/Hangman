@@ -1,8 +1,6 @@
 package com.mygdx.hangman;
 
-/**
- * Created by jamsl on 2017-05-31.
- */
+
 public class GameConfig {
     private Boolean notMuteSound = true;
     private int difficulty = 21;

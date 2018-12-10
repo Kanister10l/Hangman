@@ -5,9 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
-/**
- * Created by jamsl on 2017-05-14.
- */
+
 public class FontGenerator {
 
     public static BitmapFont getFont(String fontFileName, int size, boolean border, Color color) {

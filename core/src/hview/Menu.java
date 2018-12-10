@@ -10,9 +10,7 @@ import com.mygdx.hangman.ClickBoxList;
 import com.mygdx.hangman.ClickResponse;
 import com.mygdx.hangman.FontGenerator;
 
-/**
- * Created by jamsl on 2017-05-13.
- */
+
 public class Menu extends HView {
 
     private String name = "Menu";

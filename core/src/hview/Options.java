@@ -12,9 +12,7 @@ import com.mygdx.hangman.ClickResponse;
 import com.mygdx.hangman.FontGenerator;
 import com.mygdx.hangman.GameConfig;
 
-/**
- * Created by jamsl on 2017-05-14.
- */
+
 public class Options extends HView {
     private String name = "Options";
     private ClickResponse clickResponse;

@@ -3,9 +3,7 @@ package com.mygdx.hangman;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created on 10.05.2017 by Kamil Samul for usage in Hangman.
- */
+
 public class ClickBoxList {
     private List<ClickBox> clickBoxes;
 

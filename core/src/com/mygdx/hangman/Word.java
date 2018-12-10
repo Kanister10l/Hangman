@@ -1,8 +1,5 @@
 package com.mygdx.hangman;
 
-/**
- * Created by jamsl on 2017-05-10.
- */
 public class Word {
     private String word;
     private double points;

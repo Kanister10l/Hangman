@@ -2,9 +2,7 @@ package hview;
 
 import java.lang.reflect.InvocationTargetException;
 
-/**
- * Created on 09.05.2017 by Kamil Samul for usage in Hangman.
- */
+
 public class ViewGenerator {
 
     public ViewGenerator(){

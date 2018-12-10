@@ -3,9 +3,7 @@ package hview;
 import com.mygdx.hangman.ClickBoxList;
 import com.mygdx.hangman.ClickResponse;
 
-/**
- * Created on 09.05.2017 by Kamil Samul for usage in Hangman.
- */
+
 public class HMainView extends HView {
     private String name;
     private ClickResponse clickResponse;

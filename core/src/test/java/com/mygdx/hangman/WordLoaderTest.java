@@ -6,9 +6,7 @@ import java.util.Random;
 
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by jamsl on 2017-05-31.
- */
+
 public class WordLoaderTest {
     @Test
     public void getWord() throws Exception {

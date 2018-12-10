@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static java.lang.Character.*;
 
-/**
- * Created by szymank5 on 22.04.2017.
- */
+
 public class WordAnalyzer {
 
     private static final String FILEPATH = "resources/words.txt";

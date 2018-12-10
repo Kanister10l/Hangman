@@ -8,9 +8,6 @@ import org.bson.Document;
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * Created by jamsl on 2017-04-02.
- */
 
 public class WordLoader {
     double points;
