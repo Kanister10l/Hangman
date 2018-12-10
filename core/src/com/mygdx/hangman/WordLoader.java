@@ -27,7 +27,7 @@ public class WordLoader {
     }
 
     private void loadCollection() {
-        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://app:app@ds047955.mlab.com:47955/wisielec"));
+        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://app:appapp1@ds047955.mlab.com:47955/wisielec"));
         MongoDatabase database = mongoClient.getDatabase("wisielec");
         connection = database.getCollection("words");
     }

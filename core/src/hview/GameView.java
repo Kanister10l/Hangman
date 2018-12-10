@@ -150,8 +150,8 @@ public class GameView extends HView{
         clickBoxList.addClickBox(49 * 4, 0, 49 * 5 - 1, font1.getLineHeight() -1, 323);
         clickBoxList.addClickBox(49 * 5, 0, 49 * 6 - 1, font1.getLineHeight() -1, 211);
         clickBoxList.addClickBox(49 * 6, 0, 49 * 7 - 1, font1.getLineHeight() -1, 346);
-        clickBoxList.addClickBox(49 * 7, 0, 49 * 8 - 1, font1.getLineHeight() -1, 377);
-        clickBoxList.addClickBox(49 * 8, 0, 49 * 9 - 1, font1.getLineHeight() -1, 376);
+        clickBoxList.addClickBox(49 * 7, 0, 49 * 8 - 1, font1.getLineHeight() -1, 'Ź');
+        clickBoxList.addClickBox(49 * 8, 0, 49 * 9 - 1, font1.getLineHeight() -1, 'Ż');
 
         //correctSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/correctSound.wav"));
         wrongSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/sounds/wrongSound.wav"));
